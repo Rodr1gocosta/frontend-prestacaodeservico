@@ -1,0 +1,17 @@
+.container{
+    background-color: rgba(0, 0, 0, 0.582);
+    width: 20%;
+    margin: auto;
+    padding: 1rem 1rem;
+    box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+    border-radius: 5px;
+}
+  
+.full-width {
+    width: 100%;
+}
+
+.button-margin-top {
+    margin-top: 15px;
+  }
+

@@ -1,0 +1,10 @@
+<div class="container">
+  <h1>Observações da Ordem de Serviço</h1>
+    <p class="abertura">Data de abertura: {{ os.dataAbertura }}</p>
+
+    <h2>Observações:</h2>
+    <p>{{ os.observacoes }}</p>
+
+  <button id="cancel" (click)="navigateToCancel()" mat-stroked-button color="warn">VOLTAR</button>
+</div>
+

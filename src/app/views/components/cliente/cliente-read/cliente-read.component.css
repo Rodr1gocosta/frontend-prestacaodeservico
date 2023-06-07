@@ -1,0 +1,64 @@
+h1 {
+    color: white;
+    margin-left: 9rem;
+    font-size: 30px;
+}
+
+.container {
+    background-color: rgba(233, 227, 227, 0.63);
+    width: 80%;
+    height: 50%;
+    margin: 1rem auto 0 auto;
+    box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+    border-radius: 5px;
+  }
+
+.create {
+    width: 80%;
+    height: 50%;
+    margin: 1rem auto 0 auto;
+    box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+}    
+
+.create button {
+    width: 100%;
+}
+
+table {
+      width: 100%;      
+}
+
+
+#edit {
+    color: rgb(68, 214, 68);
+}
+#delete {
+    color: rgb(199, 88, 88);
+}
+
+.mat-column-endereco {
+    width: 200px;
+    padding-right: 100px;
+    text-align: center;
+ }
+
+.mat-column-acao {
+    width: 128px;
+    text-align: center;
+ }
+
+  
+.mat-row .mat-cell {
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+    cursor: pointer;
+}
+
+.mat-row:hover .mat-cell {
+    border-color: currentColor;
+}
+
+.demo-row-is-clicked {
+    font-weight: bold;
+}
+  
