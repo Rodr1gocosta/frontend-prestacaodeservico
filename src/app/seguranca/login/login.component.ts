@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/seguranca/login/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,8 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
-              private authService: AuthService) { }
+              private authService: AuthService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -28,24 +30,36 @@ export class LoginComponent implements OnInit {
 
     const { username, password } = this.loginForm.value;
     this.authService.login(username, password).subscribe(response => {
-        // Redireciona para outra página ou realiza ações adicionais com base na resposta recebida
-        // Exemplo: this.router.navigate(['/home']);
+      
+      this.router.navigate(['']);
+      this.authService.message('Login efetuado com sucesso!');
     },
-    error => {
-        // Lógica de tratamento de erros
-    }
+      error => {
+        let errorMessage = 'Ocorreu um erro ao fazer login. Por favor, tente novamente mais tarde.';
+
+        switch (error.status) {
+          case 401: {
+            errorMessage = 'Credenciais inválidas. Verifique seu nome de usuário e senha.';
+          } break;
+          case 403: {
+            errorMessage = 'Acesso negado. Você não tem permissão para acessar este recurso.';
+          } break;
+        }
+
+        this.authService.message(errorMessage);
+      }
     );
   }
 
   errorValidUsername() {
-    if(this.loginForm.controls['username'].invalid && this.loginForm.controls['username'].touched) {
+    if (this.loginForm.controls['username'].invalid && this.loginForm.controls['username'].touched) {
       return 'Nome de usuário é obrigatório!';
     }
     return false;
   }
 
   errorValidPassword() {
-    if(this.loginForm.controls['password'].invalid && this.loginForm.controls['password'].touched) {
+    if (this.loginForm.controls['password'].invalid && this.loginForm.controls['password'].touched) {
       return 'Senha é obrigatória!';
     }
     return false;

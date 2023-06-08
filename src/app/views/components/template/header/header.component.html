@@ -1,3 +1,51 @@
 <mat-toolbar class="header mat-elevation-z8">
-  <h1 class="mat-elevation-z8">Ordem de Serviço</h1>
+  <div class="mat-toolbar-row">
+    <button mat-icon-button (click)="toggleDrawer()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="flex-spacer"></span> <!-- Adicione essa linha para criar um espaço flexível -->
+    
+    <button mat-button [matMenuTriggerFor]="menu">
+      <mat-icon>account_circle</mat-icon>
+      Adminstrador
+      <mat-icon>arrow_drop_down</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        Controle
+      </button>
+      <button mat-menu-item>
+        Pesquisa
+      </button>
+      <button mat-menu-item>
+        Submenu 3
+      </button>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="menu">
+      <mat-icon>date_range</mat-icon>
+      <mat-icon>arrow_drop_down</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        Controle
+      </button>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="menu">
+      <mat-icon>notifications</mat-icon>
+      <mat-icon>arrow_drop_down</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        Controle
+      </button>
+    </mat-menu>
+
+    <button mat-button (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      Sair
+    </button>
+
+  </div>
 </mat-toolbar>

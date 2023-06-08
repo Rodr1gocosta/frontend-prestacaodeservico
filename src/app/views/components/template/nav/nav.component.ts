@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DrawerService } from 'src/app/services/drawer.service';
 
 @Component({
   selector: 'app-nav',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-  constructor() { }
+  constructor(public drawerService: DrawerService) { }
 
   ngOnInit(): void {
   }
