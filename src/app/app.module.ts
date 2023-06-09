@@ -29,9 +29,6 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 
-import { HeaderComponent } from './views/components/template/header/header.component';
-import { FooterComponent } from './views/components/template/footer/footer.component';
-import { NavComponent } from './views/components/template/nav/nav.component';
 import { HomeComponent } from './views/components/home/home.component';
 import { TecnicoReadComponent } from './views/components/tecnico/tecnico-read/tecnico-read.component';
 import { ClienteReadComponent } from './views/components/cliente/cliente-read/cliente-read.component';
@@ -47,14 +44,12 @@ import { OsUpdateComponent } from './views/components/os/os-update/os-update.com
 import { OsViewsComponent } from './views/components/os/os-views/os-views.component';
 import { OsOsClosedComponent } from './views/components/os/os-os-closed/os-os-closed.component';
 import { LoginComponent } from './seguranca/login/login.component';
+import { MainNavComponent } from './views/components/template/main-nav/main-nav.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    NavComponent,
     HomeComponent,
     TecnicoReadComponent,
     ClienteReadComponent,
@@ -69,7 +64,8 @@ import { LoginComponent } from './seguranca/login/login.component';
     OsUpdateComponent,
     OsViewsComponent,
     OsOsClosedComponent,
-    LoginComponent
+    LoginComponent,
+    MainNavComponent
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,7 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { map, Observable } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +13,10 @@ export class AuthService {
   baseUrl: String = environment.baseUrl;
 
   private isLoggedIn = false;
-  motrarMenuEmitter = new EventEmitter<boolean>();
 
   constructor(private http: HttpClient,
               private snack: MatSnackBar,
+              private router: Router
               ) { }
 
   login(username: string, password: string): Observable<any> {
@@ -25,15 +26,14 @@ export class AuthService {
       map((response: any) => {
         this.saveToken(response.id_token);
         this.isLoggedIn = true;
-        this.motrarMenuEmitter.emit(true);
       })
     );
   }
 
   logout() {
       localStorage.clear();
+      this.router.navigate(['/login']);
       this.isLoggedIn = false;
-      this.motrarMenuEmitter.emit(false);
   }
 
   private saveToken(token: string) {

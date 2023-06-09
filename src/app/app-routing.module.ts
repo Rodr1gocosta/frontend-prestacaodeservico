@@ -20,10 +20,11 @@ import { TecnicoUpdateComponent } from './views/components/tecnico/tecnico-updat
 
 const routes: Routes = [
 
-  // { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: '', component: AppComponent, canActivate: [AuthGuardService] },
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuardService] },
   { path: 'login', component: LoginComponent },
+  
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuardService] },
+
 
   { path: 'tecnicos', component: TecnicoReadComponent, canActivate: [AuthGuardService] },
   { path: 'tecnicos/create', component: TecnicoCreateComponent, canActivate: [AuthGuardService] },

@@ -1,0 +1,80 @@
+<mat-toolbar *ngIf="authService.isAuthenticated()" class="header mat-elevation-z8">
+  <div class="mat-toolbar-row">
+    <button mat-icon-button (click)="opened=!opened">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="flex-spacer"></span> <!-- Adicione essa linha para criar um espaço flexível -->
+    
+    <button mat-button [matMenuTriggerFor]="menu">
+      <mat-icon>account_circle</mat-icon>
+      Adminstrador
+      <mat-icon>arrow_drop_down</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        Controle
+      </button>
+      <button mat-menu-item>
+        Pesquisa
+      </button>
+      <button mat-menu-item>
+        Submenu 3
+      </button>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="menu">
+      <mat-icon>date_range</mat-icon>
+      <mat-icon>arrow_drop_down</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        Controle
+      </button>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="menu">
+      <mat-icon>notifications</mat-icon>
+      <mat-icon>arrow_drop_down</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        Controle
+      </button>
+    </mat-menu>
+
+    <button mat-button (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      Sair
+    </button>
+
+  </div>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav *ngIf="authService.isAuthenticated()" [(opened)]="opened" mode="side">
+      <mat-nav-list class="nav-list">
+          <a mat-list-item routerLink="/home">
+              <i class="material-icons">home</i>Home
+          </a>
+          <a mat-list-item routerLink="/tecnicos">
+              <i class="material-icons">work</i>Técnico
+          </a>
+          <a mat-list-item routerLink="/clientes">
+              <i class="material-icons">person_search</i>Cliente
+          </a>
+          <a mat-list-item [matMenuTriggerFor]="menu">
+              <mat-menu class="menu" #menu="matMenu">
+                  <a style="width: 192px;" routerLink="os" mat-menu-item> Abertas/Andamento</a>
+                  <a style="width: 192px;" routerLink="os/closed" mat-menu-item> Encerradas</a>
+              </mat-menu>
+              <i class="material-icons">person_pin</i>Ordens de Serviços
+          </a>
+      </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+      <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<mat-toolbar *ngIf="authService.isAuthenticated()" class="footer">
+  <p>&copy;Direitos Reservado e Desenvolvido por Rodrigo Costa</p>
+</mat-toolbar>
